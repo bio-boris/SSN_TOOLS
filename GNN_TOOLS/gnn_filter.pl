@@ -6,7 +6,7 @@ use File::Path qw(make_path remove_tree);
 my $comment = "Extracts node id, color and accession for a given GNN.
 This script requires the GNN xgmml and outputs a directory with lists for each pfam.";
 
-my $usage = "\t\t $0 -gnn<gnn file> -dir<output_dir>  (prints a directory     with lists for each pfam) \n $comment";
+my $usage = "\t\t $0 -gnn<gnn file> -dir<output_dir>  \n $comment";
 my $file;
 my $dir;
 my $f;
