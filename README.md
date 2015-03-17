@@ -10,7 +10,9 @@ A collection of scripts to extract lists from existing XGMML Files.
 
 # GNN
 
-## To create a directory for multiple sequence alignments based on a GNN:
+## To create a directory for for a GNN that contains a tab file for each PFAM.
+* Each tab file is titled PF#####.tab. 
+* The contents of each tab file is Accession, SuperClusterID, Color, Distance
 
 `module load perl;`
 
