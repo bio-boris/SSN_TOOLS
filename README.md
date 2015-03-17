@@ -8,6 +8,8 @@ A collection of scripts to extract lists from existing XGMML Files.
 
 * See install file for instructions on how to install the scripts.
 
+# GNN
+
 ## To create a directory for multiple sequence alignments based on a GNN:
 
 `module load perl;`
@@ -15,6 +17,8 @@ A collection of scripts to extract lists from existing XGMML Files.
 `perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> `
 
 *tested with 2056_gnn.xgmml and briefly with repnode.2149_gnn.xgmml*
+
+# SNN
 
 ## To extract [accession id] and [color] for colored SSNs for a full network:
 
