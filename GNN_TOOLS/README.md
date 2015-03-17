@@ -1,4 +1,4 @@
-## Get lists of accessions for Multiple Sequence Alignments
+
 
 
 ## Convert Stats Tab File 
@@ -10,7 +10,7 @@ Tabular output of (1) Cluster Number, (2) Neighbor Pfam ID, (3) Neighbor Pfam Na
 
 ` ~/EFI_TOOLS/GNN/convert_stats_tab.pl -i <input stats.tab from GNT> -o <output> `
 
-
+## Get lists of accessions for Multiple Sequence Alignments
 **To create a directory for multiple sequence alignments based on a GNN:
 
 `module load perl;`
