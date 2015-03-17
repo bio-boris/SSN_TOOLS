@@ -16,13 +16,13 @@ You do not need to be in the same directory as the script or the input file or t
 ## To create a directory for multiple sequence alignments based on a GNN:
 
 `module load perl;`
-`perl ~/EFI_TOOLS/GNN_TOOLS/extract_node_color_acc_gnn_of_many_pfams.pl <input gnn network>`
+`perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> <input gnn network>`
 
 ## To extract node id, color and accessions and print to STDOUT for colored SSNs
 
 #####FULL NETWORKS
 `module load perl;`
-`perl ~/EFI_TOOLS/GNN_TOOLS/filter_full_xgmml.pl <input colored ssn full network>`
+`perl ~/EFI_TOOLS/GNN_TOOLS/gfilter_full_xgmml.pl <input colored ssn full network>`
 
 #####REP NODE NETWORKS
 `module load perl;`
