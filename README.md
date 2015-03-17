@@ -16,17 +16,21 @@ You do not need to be in the same directory as the script or the input file or t
 ## To create a directory for multiple sequence alignments based on a GNN:
 
 `module load perl;`
+
 `perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> <input gnn network>`
 
-## To extract node id, color and accessions and print to STDOUT for colored SSNs
+## To extract [accession id] and [color] for colored SSNs for a full network:
 
-#####FULL NETWORKS
 `module load perl;`
-`perl ~/EFI_TOOLS/GNN_TOOLS/gfilter_full_xgmml.pl <input colored ssn full network>`
 
-#####REP NODE NETWORKS
+`perl ~/EFI_TOOLS/SSN_TOOLS/filter_colored_ssn.pl -full_network <colored ssn> -output<output_file> `
+
+
+## To extract [accession id], [color] and [supernode] for colored SSNs for a full network:
+
 `module load perl;`
-`perl ~/EFI_TOOLS/GNN_TOOLS/filter_xgmml_repnode.pl <input colored ssn network repnode>`
+
+`perl ~/EFI_TOOLS/SSN_TOOLS/filter_colored_ssn.pl -repnode_network <colored ssn> -output<output_file> `
 
 ##To extract uniprot sequence ids into a directory
 
