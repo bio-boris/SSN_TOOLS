@@ -11,6 +11,14 @@ Tabular output of (1) Cluster Number, (2) Neighbor Pfam ID, (3) Neighbor Pfam Na
 ` ~/EFI_TOOLS/GNN/convert_stats_tab.pl -i <input stats.tab from GNT> -o <output> `
 
 
+**To create a directory for multiple sequence alignments based on a GNN:
+
+`module load perl;`
+
+`perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir>`
+
+`tested with 2056_gnn.xgmml and briefly with repnode.2149_gnn.xgmml`
+
 Deprecated:
 
 ` awk ' { print $1 "\t" $2 ":" $3 ":" $4 ":" $5  } ' <GNT_STATS.TAB> `
