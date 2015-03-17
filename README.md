@@ -17,7 +17,7 @@ You do not need to be in the same directory as the script or the input file or t
 
 `module load perl;`
 
-`perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> <input gnn network>`
+`perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> `
 
 ## To extract [accession id] and [color] for colored SSNs for a full network:
 
