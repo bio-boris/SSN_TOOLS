@@ -7,11 +7,12 @@ A collection of scripts to extract lists from existing XGMML Files.
 * Otherwise, assuming that the scripts are extracted into your home directory, the standard usage is
 
 `module load perl; perl ~/SSN_TOOLS/script_name.pl <input_xgmml_full_or_rep> <OUTPUT> `
+or
+`module load perl; perl ~/EFI_TOOLS/script_name.pl <input_xgmml_full_or_rep> <OUTPUT> `
 
-* OUTPUT may be to STDOUT or to a directory containing a list of files.
-You do not need to be in the same directory as the script or the input file or the output file.
+* You do not need to be in the same directory as the script or the input file or the output file.
 
-* See INSTALL file for how to download the scripts.
+* See install file for instructions on how to install the scripts.
 
 ## To create a directory for multiple sequence alignments based on a GNN:
 
