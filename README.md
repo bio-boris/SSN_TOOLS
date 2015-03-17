@@ -2,15 +2,7 @@
 
 A collection of scripts to extract lists from existing XGMML Files.
 
-* To see how a script is used, run it without any inputs.
-
-* Otherwise, assuming that the scripts are extracted into your home directory, the standard usage is
-
-`module load perl; perl ~/SSN_TOOLS/script_name.pl <input_xgmml_full_or_rep> <OUTPUT> `
-
-or
-
-`module load perl; perl ~/EFI_TOOLS/script_name.pl <input_xgmml_full_or_rep> <OUTPUT> `
+* To see how a script is used, run it without any inputs. It will display what the script requires.
 
 * You do not need to be in the same directory as the script or the input file or the output file.
 
