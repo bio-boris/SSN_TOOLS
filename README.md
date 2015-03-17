@@ -14,7 +14,7 @@ A collection of scripts to extract lists from existing XGMML Files.
 
 `perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> `
 
-*tested with 2056_gnn.xgmml*
+*tested with 2056_gnn.xgmml and briefly with repnode.2149_gnn.xgmml*
 
 ## To extract [accession id] and [color] for colored SSNs for a full network:
 
