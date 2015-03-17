@@ -30,7 +30,7 @@ sub main{
     elsif(defined $full_file){
         $file = $full_file;
         print  STDERR "About to extract node id and color for full gnn $file to $output\n";
-        extract_full_accession_color();
+        extract_full_accession_color_supercluster();
     }
     else{
         die $usage . " Please enter a full or repnode GNN\n";
@@ -42,6 +42,7 @@ sub main{
 sub extract_repnode_acc_color_supernode{
     my $in_node = 0;
     my $in_acc = 0;
+    my $supercluster;
     my $supernode;
     my $color;
 
@@ -64,6 +65,11 @@ sub extract_repnode_acc_color_supernode{
                 $color = undef;
                 next;
             }
+            if($line =~ /<att name="Supercluster" /){
+                $supercluster = (split /"/, $line)[5];
+                next;
+            }
+
             my $len ='    </att>';
             if($line =~/<\/att>/){
                 $in_node =0;
@@ -89,7 +95,7 @@ sub extract_repnode_acc_color_supernode{
             if( length $id ==0){
                 next;
             }
-            print O join "\t", "$id","$color","$supernode","\n";
+            print O join "\t", "$id","$color","$supernode",$supercluster,"\n";
             # print O join "\t", "id=$id","color=$color","super=$supernode","\n";
         }
     }
@@ -99,20 +105,25 @@ sub extract_repnode_acc_color_supernode{
 
 
 
-sub extract_full_accession_color{
+sub extract_full_accession_color_supercluster{
     my $in_node = 0;
     my $in_acc = 0;
-    my $supernode;
+    my $acc;
     my $color;
+    my $supercluster;
     open F, $file or die $!;
     open O, ">$output" or die $!;
     while(my $line =<F>){
         if($line =~  '<node id='){
-            $supernode= (split /"/, $line)[1];
+            $acc= (split /"/, $line)[1];
+        }
+        if($line =~ /<att name="Supercluster" /){
+            $supercluster = (split /"/, $line)[5];
         }
         if($line =~ '<att name="node.fillColor"'){
             $color = (split /"/, $line)[5];
-            print O "$supernode\t$color\n";
+            print O "$acc\t$color\t$supercluster\n";
+            $acc = $color = $supercluster = ();
             next;
         }
     }
