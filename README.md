@@ -28,7 +28,7 @@ A collection of scripts to extract lists from existing XGMML Files.
 
 *tested with 1970_color.xgmml and PF05544.repnode-1.00.1978_color.xgmml*
 
-## To extract [accession id], [color] and [supernode] for colored SSNs for a full network:
+## To extract [accession id], [color] and [supernode] for colored SSNs for a repnode network:
 
 `module load perl;`
 
