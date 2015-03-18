@@ -22,11 +22,11 @@ foreach my $file(@files){
             if($line =~/<att name="Supercluster" type="string" value="([0-9]*)" /){
                 $cluster = $1;
                 if(length $cluster ==0){
-                    print "Found no cluster for $id $list_ids[0]\n";
+                    #print "Found no cluster for $id $list_ids[0]\n";
                     $cluster = "undefined";
                 }
                 else{
-                    print "Found cluster $cluster\n";
+                    #print "Found cluster $cluster\n";
                 }
             }
             if($line =~ /<att type="list" name="ACC">/){
@@ -50,9 +50,9 @@ foreach my $file(@files){
 
     foreach my $cluster(keys %hash){
         my $output = "$file-msa/$cluster";
-        print "About to print to $output\n";
+        #print "About to print to $output\n";
         open O, ">$output" or die $!;
-        print "opened filehandle >$output\n";
+        # print "opened filehandle >$output\n";
         my @cluster_members = @{$hash{$cluster}};
         foreach my $cluster_member(@cluster_members){
             if (length($cluster_member) > 0){
@@ -61,4 +61,8 @@ foreach my $file(@files){
         }
         close O;
     }
+}
+
+foreach my $file(@files){
+    print "Printed $file-msa\n";
 }

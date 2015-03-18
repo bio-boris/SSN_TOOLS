@@ -89,7 +89,7 @@ while(my $line = <F>){
             }
             #    print O join "\t", $neighbor_accessions[$i],$cluster,$color,$distances[$i],"\n";
             #}
-            print "Printed family $family to $family_file ($count)\n";
+            #print "Printed family $family to $family_file ($count)\n";
             close O;
             $family = $color = $cluster = @neighbor_accessions = @distances = ();
             %query_neighbor_distance = ();
@@ -102,4 +102,4 @@ while(my $line = <F>){
 
 }
 
-
+print "Results printed to $dir\n";

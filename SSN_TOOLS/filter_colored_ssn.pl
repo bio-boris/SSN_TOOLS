@@ -77,12 +77,15 @@ sub extract_repnode_acc_color_supernode{
             next;
         }
         else{
-            my $len = length "  </node>";
-            if(substr($line,0,$len) eq '  </node>'){
+            if($line =~ /<\/node>/){
                 $in_node = 0;
                 $in_acc =0;
                 $supernode = undef;
                 $color = undef;
+                next;
+            }
+            if($line =~ /<att name="node\.fillColor"/){
+                $color = (split /"/, $line)[5];
                 next;
             }
             if($line =~ /<att name="Supercluster" /){
@@ -98,13 +101,7 @@ sub extract_repnode_acc_color_supernode{
                 $in_acc = 0;
                 next;
             }
-            my $len = length('    <att name="node.fillColor"');
-            if(substr($line,0,$len) eq '    <att name="node.fillColor"'){
-                $color = (split /"/, $line)[5];
-                next;
-            }
-            my $len = length('    <att type="list" name="ACC">');
-            if(substr($line,0,$len) eq '    <att type="list" name="ACC">'){
+            if($line =~/<att type="list" name="ACC">/){
                 $in_acc = 1;
                 next;
             }
@@ -134,14 +131,15 @@ sub extract_full_accession_color_supercluster{
     open F, $file or die $!;
     open O, ">$output" or die $!;
     while(my $line =<F>){
-        if($line =~  '<node id='){
-            $acc= (split /"/, $line)[1];
+        chomp $line;
+        if($line =~  /node id=".+" label="(.+)">/){
+            $acc= $1;
         }
-        if($line =~ /<att name="Supercluster" /){
-            $supercluster = (split /"/, $line)[5];
+        if($line =~ /<att name="node\.fillColor" type="string" value="(#[A-Z0-9]{6})" /){
+            $color = $1;
         }
-        if($line =~ '<att name="node.fillColor"'){
-            $color = (split /"/, $line)[5];
+        if($line =~ /<att name="Supercluster" type="string" value="(.*)" \/>/){
+            $supercluster = $1;
             print O "$acc\t$color\t$supercluster\n";
             $acc = $color = $supercluster = ();
             next;
