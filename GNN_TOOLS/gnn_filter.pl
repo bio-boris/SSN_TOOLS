@@ -3,8 +3,8 @@ use strict;
 use Getopt::Long;
 use File::Path qw(make_path remove_tree);
 #Extracts  Node ID, Color, and Accs, and prints
-my $comment = "Extracts node id, color and accession for a given GNN.
-This script requires the GNN xgmml and outputs a directory with lists for each pfam.";
+#  print $query,$neighbor,$distance,$cluster,$color,"\n";
+my $comment = "Extracts query, neigbor, distance, cluster and color for a given GNN. Creates lists titled by pfam\n";
 
 my $usage = "\t\t $0 -gnn<gnn file> -dir<output_dir>  \n $comment";
 my $file;
@@ -13,17 +13,17 @@ my $f;
 
 GetOptions (
     "gnn=s" =>\$file,
-    "dir=s" => \$dir,
+    "dir:s" => \$dir,
     "f" => \$f
 )    
-or die("Error in command line arguments\n");
+    or die("Error in command line arguments\n");
 
 die $usage  unless (defined $file || defined $dir);
 if(! defined $file){
     die "Input a -gnn\n";
 }
 elsif (!defined $dir){
-    die "Input a -dir\n";
+    $dir = "$file-mapping ";
 }
 
 
@@ -33,8 +33,11 @@ my $family;
 my $color;
 my $cluster;
 my $in_node;
+
+my %query_neighbor_distance;
 my @neighbor_accessions;
 my @distances;
+my @query_accessions;
 my $count = 0;
 
 if(defined $f){
@@ -46,6 +49,7 @@ elsif(-s $dir){
 mkdir($dir);
 
 while(my $line = <F>){
+    chomp $line;
     if(!$in_node){
         if($line =~ /<node id="(.{6,9});[0-9]+" label=".+">/){
             $in_node = 1;
@@ -59,25 +63,36 @@ while(my $line = <F>){
         if($line =~ /<att name="node\.fillColor" type="string" value="(#.{6})" \/>/){
             $color = $1;
         }
-        if($line =~ /<att type="string" name="Neighbor_Accessions" value="(.+)" \/>/){
-            my $value = $1;
-            push @neighbor_accessions, (split /:/, $value)[0];
-        }
+        # if($line =~ /<att type="string" name="Neighbor_Accessions" value="(.+)" \/>/){
+        #    my $value = $1;
+        #    push @neighbor_accessions, (split /:/, $value)[0];
+        #}
         if($line =~ /<att type="string" name="Distance" value="(.+)" \/>/){
             my $value = $1;
-            push @distances, (split /:/, $value)[2];
+            my ($query,$neighbor,$distance) = split /:/, $value;
+            $query_neighbor_distance{$query}{'neighbor'} = $neighbor;
+            $query_neighbor_distance{$query}{'distance'} = abs($distance);
+            #print "Found distance $line\n";
+            #print "$family,$color,$cluster,$query,$neighbor,$distance \n";
         }
         if($line =~/<\/node>/){
             $in_node = 0;
             my $family_file = "$dir/$family.tab";
 
             open O, ">>$family_file" or die $!;
-            for(my $i =0 ; $i < scalar @neighbor_accessions; $i++){
-                print O join "\t", $neighbor_accessions[$i],$cluster,$color,$distances[$i],"\n";
+            #for(my $i =0 ; $i < scalar @neighbor_accessions; $i++){
+            foreach my $query(sort keys %query_neighbor_distance){
+                my $neighbor = $query_neighbor_distance{$query}{'neighbor'};
+                my $distance = $query_neighbor_distance{$query}{'distance'};
+                print O join "\t", $query,$neighbor,$distance,$cluster,$color,"\n";
+                #print $query,$neighbor,$distance,$cluster,$color,"\n";        
             }
+            #    print O join "\t", $neighbor_accessions[$i],$cluster,$color,$distances[$i],"\n";
+            #}
             print "Printed family $family to $family_file ($count)\n";
             close O;
             $family = $color = $cluster = @neighbor_accessions = @distances = ();
+            %query_neighbor_distance = ();
             $count++;
             if($count ==1){
             }

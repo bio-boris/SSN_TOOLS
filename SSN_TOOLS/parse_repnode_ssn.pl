@@ -17,11 +17,12 @@ foreach my $file(@files){
     my $in_list = 0;
     my @list_ids = ();
     while(my $line = <F>){
+        chomp $line;
         if(! $in_list){
             if($line =~/<att name="Supercluster" type="string" value="([0-9]*)" /){
                 $cluster = $1;
                 if(length $cluster ==0){
-                    print "Found no cluster for $id\n";
+                    print "Found no cluster for $id $list_ids[0]\n";
                     $cluster = "undefined";
                 }
                 else{
@@ -52,7 +53,12 @@ foreach my $file(@files){
         print "About to print to $output\n";
         open O, ">$output" or die $!;
         print "opened filehandle >$output\n";
-        print O join "\n", (@{$hash{$cluster}}); 
-            close O;
+        my @cluster_members = @{$hash{$cluster}};
+        foreach my $cluster_member(@cluster_members){
+            if (length($cluster_member) > 0){
+                print O "$cluster_member\n";
+            }
         }
+        close O;
     }
+}

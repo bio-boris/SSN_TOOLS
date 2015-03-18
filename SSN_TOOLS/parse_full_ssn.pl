@@ -37,7 +37,13 @@ foreach my $file(@files){
         print "About to print to $output\n";
         open O, ">$output" or die $!;
         print "opened filehandle >$output\n";
-        print O join "\n", @{$hash{$cluster}}; 
+        my @accessions = @{$hash{$cluster}};
+        foreach my $acc(@accessions){
+            if(length $acc > 0){
+                print O "$acc\n";
+            }
+        }
+        #print O join "\n", @{$hash{$cluster}}; 
         close O;
     }
 }

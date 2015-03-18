@@ -1,17 +1,20 @@
 #!/usr/bin/env perl
 use strict;
 use Getopt::Long;
-my $usage = "\tUsage: -full_network<colored xgmml> or -repnode_network<colored xgmml> -output<Default STDOUT> ";
+my $usage = "\tUsage: -full_network<colored xgmml> or -repnode_network<colored xgmml> -output<optional> \n\n outputs a list ";
 die $usage unless defined @ARGV;
 
 my $file   ;
 my $repnode_file;
 my $full_file;
 my $output ;
+my $f;
 GetOptions (
     "repnode_network=s" =>\$repnode_file,
     "full_network=s" => \$full_file,    
-    "output=s"   => \$output)       
+    "output:s"   => \$output,
+    "f" => \$f)       
+
     or die("Error in command line arguments\n");
 
 main();
@@ -19,25 +22,42 @@ main();
 sub main{
     print "main";
 
-    if(!defined $output){
-        die "Need an output file\n";
-    }
     if(defined $repnode_file){
         $file = $repnode_file;
-        print STDERR "About to extract node id , color and supernode for repnode $file to $output\n";
+        $output = length($output) > 0 ? $output : "$file-filtered";
+        checkOutput($output);
+
+        print STDERR "About to extract node id , color , cluster and seed for repnode $file to $output\n";
         extract_repnode_acc_color_supernode();
+        sortOutput($output);
     }
     elsif(defined $full_file){
         $file = $full_file;
-        print  STDERR "About to extract node id and color for full gnn $file to $output\n";
+        $output = length($output) > 0 ? $output : "$file-filtered";
+        checkOutput($output);
+        print  STDERR "About to extract node id, color,  for full gnn $file to $output\n";
         extract_full_accession_color_supercluster();
+        sortOutput($output);
     }
     else{
         die $usage . " Please enter a full or repnode GNN\n";
     }
-
-
 }
+
+sub checkOutput{
+    my $file = shift;
+    if(-s $file && length $file > 0 && not defined $f){
+        die "$file already exists. Specify -f option if you would like to overwrite this file\n";
+    }
+}
+sub sortOutput{
+    my $file = shift;
+    my $col = 3;
+    my $sort= "sort -t\$'\t' -n -k $col,$col $file > $file.sorted"; 
+    print "\nSee a sorted copy at $file.sorted\n";
+    system($sort);
+}
+
 
 sub extract_repnode_acc_color_supernode{
     my $in_node = 0;
@@ -95,7 +115,7 @@ sub extract_repnode_acc_color_supernode{
             if( length $id ==0){
                 next;
             }
-            print O join "\t", "$id","$color","$supernode",$supercluster,"\n";
+            print O join "\t", "$id","$color",$supercluster,"$supernode","\n";
             # print O join "\t", "id=$id","color=$color","super=$supernode","\n";
         }
     }
