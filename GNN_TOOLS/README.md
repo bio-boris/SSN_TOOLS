@@ -9,6 +9,7 @@ Tabular output of (1) Cluster Number, (2) Neighbor Pfam ID, (3) Neighbor Pfam Na
 
 `module load perl; perl ~/EFI_TOOLS/GNN/convert_stats_tab.pl -i <input stats.tab from GNT> -o <output> `
 
+## To create a directory for for a GNN that contains a tab file for each PFAM.
 Example Usage:
 
 `~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.full/full.2148_gnn.xgmml`
