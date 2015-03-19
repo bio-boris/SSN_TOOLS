@@ -4,6 +4,7 @@
 Example Usage:  
 
 `~/EFI_TOOLS/SSN_TOOLS/ssn_to_msa.pl -repnode_network ~/PF05544.SSN-GNN.repnode/repnode.2149_color.xgmml`
+
 `~/EFI_TOOLS/SSN_TOOLS/ssn_to_msa.pl -full_network ~/PF05544.SSN-GNN.full/full.2148_color.xgmml`
 
 *  Script Name: **ssn_to_msa.pl**
