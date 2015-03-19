@@ -26,7 +26,6 @@ A collection of scripts to extract lists from existing XGMML Files.
 Example Usage:  
 
 `~/EFI_TOOLS/SSN_TOOLS/ssn_to_msa.pl -repnode_network ~/PF05544.SSN-GNN.repnode/repnode.2149_color.xgmml`
-
 `~/EFI_TOOLS/SSN_TOOLS/ssn_to_msa.pl -full_network ~/PF05544.SSN-GNN.full/full.2148_color.xgmml`
 
 *  Script Name: **ssn_to_msa.pl**
@@ -59,12 +58,6 @@ Example Usage:
 * Usage: `-gnn<gnn file> -dir<optional> `
 * Output: A directory,   which by default is called 'ssn_filename-mapping'. with tab files titled by PFAM.
 * Fields: Query, Neighbor, Distance, Cluster# , Color
-
-
-
-
-
-
 
 
 
