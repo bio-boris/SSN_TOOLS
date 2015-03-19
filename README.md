@@ -40,7 +40,7 @@ Example Usage:
 
 `~/EFI_TOOLS/SSN_TOOLS/filter_colored_ssn.pl -full_network ~/PF05544.SSN-GNN.full/full.2148_color.xgmml `
 
-* Script Name: filter_colored_ssn.pl
+* Script Name: **filter_colored_ssn.pl**
 * Usage: -full_network<colored xgmml> or -repnode_network<colored xgmml> -output<optional>
 * Output: A file, which by default is called 'ssn_filename-filtered' which contains the following fields
  *  Repnode Network Fields: ID, Color, Cluster#, Seed Sequence
@@ -54,7 +54,7 @@ Example Usage:
 
 `~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.repnode/repnode.2149_gnn.xgmml`
 
-* Script name: ./gnn_filter.pl
+* Script name: **gnn_filter.pl**
 * Usage: -gnn<gnn file> -dir<optional> 
 * Output: A directory,   which by default is called 'ssn_filename-mapping'. with tab files titled by PFAM.
 * Fields: Query, Neighbor, Distance, Cluster# , Color
