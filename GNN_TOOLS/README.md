@@ -1,3 +1,5 @@
+#GNN
+
 ## Convert Stats Tab File 
 
 These scripts transform the outputs from the GNT tool (Colored Sequence Similarity Network (SSN))
@@ -7,14 +9,14 @@ Tabular output of (1) Cluster Number, (2) Neighbor Pfam ID, (3) Neighbor Pfam Na
 
 `module load perl; perl ~/EFI_TOOLS/GNN/convert_stats_tab.pl -i <input stats.tab from GNT> -o <output> `
 
+Example Usage:
 
+`~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.full/full.2148_gnn.xgmml`
 
-## To create a directory for for a GNN that contains a tab file for each PFAM.
-* Each tab file is titled PF#####.tab. 
-* The contents of each tab file is Accession, SuperClusterID, Color, Distance
+`~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.repnode/repnode.2149_gnn.xgmml`
 
-`module load perl;`
+* Script name: **gnn_filter.pl**
+* Usage: `-gnn<gnn file> -dir<optional> `
+* Output: A directory,   which by default is called 'ssn_filename-mapping'. with tab files titled by PFAM.
+* Fields: Query, Neighbor, Distance, Cluster# , Color
 
-`perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> `
-
-*tested with 2056_gnn.xgmml and briefly with repnode.2149_gnn.xgmml*
