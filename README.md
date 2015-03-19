@@ -35,7 +35,7 @@ Example Usage:
  *  Repnode Network Fields: ID, Color, Cluster#, Seed Sequence
  *  Full Network Fields: ID, Color, Cluster#
 
-## GNN
+# GNN
 ## To create a directory for for a GNN that contains a tab file for each PFAM.
 Example Usage:
 
