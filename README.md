@@ -36,7 +36,7 @@ Example Usage:
  *  Full Network Fields: ID, Color, Cluster#
 
 # GNN
-## To create a directory for for a GNN that contains a tab file for each PFAM.
+## To create a directory for  a GNN that contains a tab file for each PFAM.
 Example Usage:
 
 `~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.full/full.2148_gnn.xgmml`
