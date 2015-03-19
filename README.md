@@ -35,6 +35,7 @@ Example Usage:
 ## Create a list of ids, colors and cluster#s for MSA, for a given colored SSN
 Example Usage:
 `~/EFI_TOOLS/SSN_TOOLS/filter_colored_ssn.pl -repnode_network ~/PF05544.SSN-GNN.repnode/repnode.2149_color.xgmml `
+
 `~/EFI_TOOLS/SSN_TOOLS/filter_colored_ssn.pl -full_network ~/PF05544.SSN-GNN.full/full.2148_color.xgmml `
 
 * Script Name: filter_colored_ssn.pl
@@ -47,7 +48,9 @@ Example Usage:
 
 Example Usage:
 `~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.full/full.2148_gnn.xgmml`
+
 `~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn ~/PF05544.SSN-GNN.repnode/repnode.2149_gnn.xgmml`
+
 * Script name: ./gnn_filter.pl
 * Usage: -gnn<gnn file> -dir<optional> 
 * Output: A directory,   which by default is called 'ssn_filename-mapping'. with tab files titled by PFAM.
