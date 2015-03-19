@@ -8,18 +8,6 @@ A collection of scripts to extract lists from existing XGMML Files.
 
 * See install file for instructions on how to install the scripts.
 
-# GNN
-
-## To create a directory for for a GNN that contains a tab file for each PFAM.
-* Each tab file is titled PF#####.tab. 
-* The contents of each tab file is Accession, SuperClusterID, Color, Distance
-
-`module load perl;`
-
-`perl ~/EFI_TOOLS/GNN_TOOLS/gnn_filter.pl -gnn<gnn file> -dir<output_dir> `
-
-*tested with 2056_gnn.xgmml and briefly with repnode.2149_gnn.xgmml*
-
 # SNN
 
 ## Create a list of uniprot accession ids for MSA , by cluster for a given colored SSN
