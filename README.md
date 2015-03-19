@@ -22,6 +22,46 @@ A collection of scripts to extract lists from existing XGMML Files.
 
 # SNN
 
+## Create a list of uniprot accession ids for MSA , by cluster for a given colored SSN
+Example Usage:  
+`~/EFI_TOOLS/SSN_TOOLS/ssn_to_msa.pl -repnode_network ~/PF05544.SSN-GNN.repnode/repnode.2149_color.xgmml`
+`~/EFI_TOOLS/SSN_TOOLS/ssn_to_msa.pl -full_network ~/PF05544.SSN-GNN.full/full.2148_color.xgmml`
+
+*  Script Name: **ssn_to_msa.pl**
+*  Usage: -full_network<colored ssn> or -repnode_network<colored ssn> -dir<optional>
+*  Output: A directory ,  A file, which by default is called 'ssn_filename-msa'.
+*  Creates a file for each cluster, each containing a list of uniprot accession ids.
+  
+## Create a file for MSA, with ID, color and supercluster
+Example Usage:
+
+
+* Script Name: filter_colored_ssn.pl
+* Usage: -full_network<colored xgmml> or -repnode_network<colored xgmml> -output<optional>
+* Output: A file, which by default is called 'ssn_filename-filtered' which contains the following fields
+* Full Network Fields:
+
+   
+
+GNN_TOOLS
+./gnn_filter.pl
+   Example Usage:
+
+    Usage: -gnn<gnn file> -dir<output_dir> 
+    Output: A directory, with tab files titled by PFAM.
+    Full Network:
+
+    Repnode Network:
+
+
+
+
+
+
+
+
+
+
 ## To extract [accession id] and [color] for colored SSNs for a full network:
 
 `module load perl;`
