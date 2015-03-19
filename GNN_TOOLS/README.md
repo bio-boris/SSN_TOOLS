@@ -1,6 +1,3 @@
-
-
-
 ## Convert Stats Tab File 
 
 These scripts transform the outputs from the GNT tool (Colored Sequence Similarity Network (SSN))
